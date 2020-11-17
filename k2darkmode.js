@@ -22,6 +22,7 @@ var defaults = {
  * RETURNS :  True/False
  */
 function addCss(fileName) {
+    removeDarkMode();
     var head = document.head;
     var link = document.createElement("link");
     link.type = "text/css";
@@ -36,8 +37,13 @@ function addCss(fileName) {
  * RETURNS :  Nothing
  */
 function removeDarkMode() {
-    const stylesheet = document.getElementById("darkMode_css");
-    stylesheet.parentNode.removeChild(stylesheet);
+    try {
+        const stylesheet = document.getElementById("darkMode_css");
+        stylesheet.parentNode.removeChild(stylesheet);
+    }
+    catch (e) {
+        //do nothing
+    }
 }
 /*
  * PURPOSE : Converts to Unix Time Stamp
