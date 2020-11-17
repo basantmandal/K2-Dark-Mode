@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Title tags -->
+    <title>K2 DarkMode | Javascript Dark Mode Plugin</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- Optional theme -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+        body
+        {
+            background: rgba(246, 246, 247, 1);
+            color: rgba(32, 34, 35, 1);
+            font-family: "Ubuntu", sans-serif;
+        }
+
+        .header_label
+        {
+            font-weight: 600;
+            border-bottom: 1px solid darkblue;
+            padding: 6px 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col col-xs-12 col-sm-12 col-md-12 text-center"><br><br>
+                <button id="darkMode" class="btn btn-success btn-small">Dark Mode</button>
+                <button id="normalMode" class="btn btn-primary btn-small">Normal Mode</button>
+                <br><br>
+            </div>
+            <div class="col col-xs-12 col-sm-12 col-md-12 text-center header_label">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen
+                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more
+                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="col col-xs-12 col-sm-12 col-md-12 text-center header_label">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen
+                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more
+                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+    </div>
+    <script src="k2darkmode.js"></script>
+    <script>
+        let darkMode_btn = document.getElementById("darkMode");
+        let normalMode_btn = document.getElementById("normalMode");
+        darkMode_btn.addEventListener("click", () =>
+        {
+            let defaults = {
+                light: "light.css",
+                dark: "dark.css",
+                startAt: '13:00',
+                endAt: '06:00',
+            };
+            darkMode(defaults);
+        });
+        normalMode_btn.addEventListener("click", () =>
+        {
+            removeDarkMode();
+        });
+    </script>
+</body>
+
+</html>
