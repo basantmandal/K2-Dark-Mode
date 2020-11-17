@@ -44,7 +44,7 @@ function removeDarkMode() {
  *  PARAMS :  Valid Time like 13:00 (24Hrs Format)
  * RETURNS :  Unix Time Stamp
  */
-var normalizeTime = function (time) {
+var unitTimeStamp = function (time) {
     let date = new Date();
     let normalized = time.split(':');
     return date.setHours(normalized[0], normalized[1], 0);
@@ -56,8 +56,8 @@ var normalizeTime = function (time) {
  */
 var darkMode = (options = defaults, debug = settings.debug) => {
     let dateObject = new Date();
-    let startTime = normalizeTime(options.startAt);
-    let endTime = normalizeTime(options.endAt);
+    let startTime = unitTimeStamp(options.startAt);
+    let endTime = unitTimeStamp(options.endAt);
     let currentTime = dateObject.getTime();
     let status = (endTime < currentTime && currentTime > startTime) || (startTime > currentTime && currentTime < endTime) ? addCss(options.dark) : addCss(options.light);
     if (debug) {
