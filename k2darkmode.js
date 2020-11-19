@@ -52,6 +52,7 @@ var defaults = {
  *  PARAMS :  Valid Time like 13:00 (24Hrs Format)
  * RETURNS :  Unix Time Stamp
  */
+
  var unitTimeStamp = function (time) {
     let date = new Date();
     let normalized = time.split(':');
