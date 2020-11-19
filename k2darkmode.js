@@ -1,9 +1,3 @@
-/*
- * k2darkmode.js 0.0.1 - 17 - November - 2020
- * Copyright (c) 2020 Basant Mandal, https://wwww.techbasant.in
- * k2darkmode.js is open sourced under the MIT license.
- * https://github.com/basantmandal/K2DarkMode
- */
 var settings = {
     debug: false,
     version: "0.0.1"
@@ -11,23 +5,25 @@ var settings = {
 console.clear();
 console.log("Dark JS Active\nVersion:- " + settings.version);
 var defaults = {
-    light: "assets/css/light.css",
-    dark: "assets/css/dark.css",
-    startAt: '13:00',
-    endAt: '06:00',
+    light       : "assets/css/light.css",
+    dark        : "assets/css/dark.css",
+    startAt     : '13:00',
+    endAt       : '06:00',
+    anyTimeDark : "1" // BY PASS TIME CHECK
 };
 /*
  * PURPOSE : ADD DARK CLASS ON THE HEAD SECTION
  *  PARAMS :  fileName (Can be with Path like assets/css/darkmode.css)
  * RETURNS :  True/False
  */
-function addCss(fileName) {
+ function addCss(fileName) {
+    let date = new Date();
     removeDarkMode();
     var head = document.head;
     var link = document.createElement("link");
     link.type = "text/css";
     link.rel = "stylesheet";
-    link.href = fileName;
+    link.href = fileName + '?v=' + date.getTime();
     link.id = "darkMode_css"
     head.appendChild(link);
 }
@@ -36,12 +32,12 @@ function addCss(fileName) {
  *  PARAMS :
  * RETURNS :  Nothing
  */
-function removeDarkMode() {
-    try {
+ function removeDarkMode() {
+    try{
         const stylesheet = document.getElementById("darkMode_css");
         stylesheet.parentNode.removeChild(stylesheet);
     }
-    catch (e) {
+    catch(e){
         //do nothing
     }
 }
@@ -50,7 +46,7 @@ function removeDarkMode() {
  *  PARAMS :  Valid Time like 13:00 (24Hrs Format)
  * RETURNS :  Unix Time Stamp
  */
-var unitTimeStamp = function (time) {
+ var unitTimeStamp = function (time) {
     let date = new Date();
     let normalized = time.split(':');
     return date.setHours(normalized[0], normalized[1], 0);
@@ -60,12 +56,12 @@ var unitTimeStamp = function (time) {
  *  PARAMS :  Valid Time like 13:00 (24Hrs Format)
  * RETURNS :  Unix Time Stamp
  */
-var darkMode = (options = defaults, debug = settings.debug) => {
+ var darkMode = (options = defaults, debug = settings.debug) => {
     let dateObject = new Date();
     let startTime = unitTimeStamp(options.startAt);
     let endTime = unitTimeStamp(options.endAt);
     let currentTime = dateObject.getTime();
-    let status = (endTime < currentTime && currentTime > startTime) || (startTime > currentTime && currentTime < endTime) ? addCss(options.dark) : addCss(options.light);
+    let status = (endTime < currentTime && currentTime > startTime) || (startTime > currentTime && currentTime < endTime) || options.anyTimeDark == "1" ? addCss(options.dark) : addCss(options.light);
     if (debug) {
         console.clear();
         console.log("Dark JS Active\nVersion:- " + settings.version + " Debug Mode Enabled\n");
