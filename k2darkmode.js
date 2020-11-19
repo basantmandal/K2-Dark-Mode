@@ -1,3 +1,9 @@
+/*
+ * k2darkmode.js 0.0.1 - 17 - November - 2020
+ * Copyright (c) 2020 Basant Mandal, https://wwww.techbasant.in
+ * k2darkmode.js is open sourced under the MIT license.
+ * https://github.com/basantmandal/K2DarkMode
+ */
 var settings = {
     debug: false,
     version: "0.0.1"
