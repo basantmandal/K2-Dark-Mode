@@ -9,6 +9,3 @@ You can even set time for automatic Dark Mode Application during specific hours 
     * Very Easy to Customize as per your needs - Only CSS needs to be updated.
 
 **How can you use for test or learning purpose ? You can go through the index.html or else read below**
-
-
-Please note:- **This plugin is under development.**
